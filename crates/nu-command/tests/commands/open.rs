@@ -1192,6 +1192,15 @@ fn open_multiple_files() {
 }
 
 #[test]
+fn open_raw_multiple_files() {
+    let actual = nu!(cwd: "tests/fixtures/formats", "
+    open --raw sample_data.xlsx sample_data_with_annotation.ods | length
+    ");
+
+    assert_eq!(actual.out, "2")
+}
+
+#[test]
 fn test_open_block_command() {
     let actual = nu!(
         cwd: "tests/fixtures/formats",
